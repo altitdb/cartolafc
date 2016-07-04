@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Properties>
+	   <Property name="log-path">logs</Property>
+	</Properties>
+    
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+		<RollingFile name="AppFile" fileName="${log-path}/app.log"
+			filePattern="${log-path}/app-%d{dd-MM-yyyy}-%i.log">
+			<PatternLayout>
+			     <pattern>%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</pattern>
+			</PatternLayout>
+			<Policies>
+			     <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                 <SizeBasedTriggeringPolicy size="50MB"/>
+			</Policies>
+			<DefaultRolloverStrategy max="20000"/>
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+	    <Logger name="com.bolaodamega.megasena" level="debug" additivity="false">
+            <appender-ref ref="Console" level="info"/>
+            <appender-ref ref="AppFile" level="debug"/>
+        </Logger>
+        <Logger name="org.hibernate" level="info" additivity="false">
+            <appender-ref ref="Console" level="info"/>
+            <appender-ref ref="AppFile" level="info"/>
+        </Logger>
+        <Logger name="org.springframework" level="info" additivity="false">
+            <appender-ref ref="Console" level="info"/>
+            <appender-ref ref="AppFile" level="info"/>
+        </Logger>
+        <Root level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Root>
+        <Root level="debug" additivity="false">
+            <AppenderRef ref="AppFile"/>
+        </Root>
+	</Loggers>
+</Configuration>
