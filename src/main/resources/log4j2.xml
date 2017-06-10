@@ -21,7 +21,7 @@
 		</RollingFile>
 	</Appenders>
 	<Loggers>
-	    <Logger name="com.bolaodamega.megasena" level="debug" additivity="false">
+	    <Logger name="com.globo.cartolafc" level="debug" additivity="false">
             <appender-ref ref="Console" level="info"/>
             <appender-ref ref="AppFile" level="debug"/>
         </Logger>

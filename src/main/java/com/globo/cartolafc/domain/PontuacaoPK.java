@@ -10,7 +10,8 @@ import javax.persistence.ManyToOne;
 @Embeddable
 public class PontuacaoPK implements Serializable {
 
-	@ManyToOne
+    private static final long serialVersionUID = 23L;
+    @ManyToOne
 	@JoinColumn(name = "id_atleta")
 	private Atleta atleta;
 	@Column(name = "id_rodada")
